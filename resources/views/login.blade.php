@@ -12,23 +12,32 @@
                                 <p class="mb-0">Enter your email and password to sign in</p>
                             </div>
                             <div class="card-body">
-                                <form role="form">
+                                <form role="form" action="{{ route('login_user') }}" method="POST">
+                                    @csrf
                                     <label>Email</label>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                                        <input type="email" class="form-control" name="email" placeholder="Email" aria-label="Email"
                                             aria-describedby="email-addon">
                                     </div>
                                     <label>Password</label>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control" placeholder="Password"
-                                            aria-label="Password" aria-describedby="password-addon">
+                                        <input type="password" class="form-control" placeholder="Password"
+                                            aria-label="Password" name="password" aria-describedby="password-addon">
+                                    </div>
+                                    <label>Login As</label>
+                                    <div class="mb-3">
+                                        <select class="form-select form-control" name="login_as" aria-label="Default select example">
+                                            <option selected>Login As</option>
+                                            <option value="Admin">Admin</option>
+                                            <option value="Siswa">Siswa</option>
+                                          </select>
                                     </div>
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
                                         <label class="form-check-label" for="rememberMe">Remember me</label>
                                     </div>
                                     <div class="text-center">
-                                        <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
+                                        <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
                                     </div>
                                 </form>
                             </div>

@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LibraryController::class, 'index']);
-Route::get('/login', [LibraryController::class, 'login'])->name('login_page');
+Route::get('/', [LibraryController::class, 'index'])->middleware('auth:siswa')->name('dashboard');
+Route::get('/login', [LibraryController::class, 'login'])->name('login');
 Route::get('/register', [LibraryController::class, 'register'])->name('register_page');
 Route::get('/profil', [LibraryController::class, 'profil']);
 
 Route::post('/register', [AuthController::class, 'register'])->name('register_user');
+Route::post('/login', [AuthController::class, 'login'])->name('login_user');
