@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LibraryController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LibraryController::class, 'index']);
-Route::get('/login', [LibraryController::class, 'login']);
-Route::get('/register', [LibraryController::class, 'register']);
+Route::get('/login', [LibraryController::class, 'login'])->name('login_page');
+Route::get('/register', [LibraryController::class, 'register'])->name('register_page');
 Route::get('/profil', [LibraryController::class, 'profil']);
+
+Route::post('/register', [AuthController::class, 'register'])->name('register_user');

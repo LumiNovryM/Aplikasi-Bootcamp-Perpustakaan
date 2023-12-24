@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('kelas');
             $table->string('email')->unique();
             $table->string('role_status')->default('siswa');
+            $table->string('password');
             $table->timestamps();
         });
     }
