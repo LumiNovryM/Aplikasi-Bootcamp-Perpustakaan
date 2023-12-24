@@ -1,5 +1,6 @@
 @extends('layouts.main_login')
 @section('login_content')
+    {{-- content --}}
     <section>
         <div class="page-header min-vh-75">
             <div class="container">
