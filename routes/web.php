@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LibraryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LibraryController::class, 'index']);
+Route::get('/login', [LibraryController::class, 'login']);
+Route::get('/register', [LibraryController::class, 'register']);
+Route::get('/profil', [LibraryController::class, 'profil']);
