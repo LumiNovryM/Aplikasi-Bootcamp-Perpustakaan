@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('role_status')->default('admin');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            // FK To Siswa
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswas');
+            // FK To Buku
+            $table->unsignedBigInteger('buku_id');
+            $table->foreign('buku_id')->references('id')->on('bukus');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('transaksis');
     }
 };
