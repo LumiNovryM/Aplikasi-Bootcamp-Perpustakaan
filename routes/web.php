@@ -15,11 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LibraryController::class, 'index'])->middleware('auth:siswa')->name('dashboard');
 Route::get('/login', [LibraryController::class, 'login'])->name('login');
-Route::get('/register', [LibraryController::class, 'register'])->name('register_page');
-Route::get('/profil', [LibraryController::class, 'profil']);
+Route::get('/register', [LibraryController::class, 'register'])->name('register');
+Route::get('/profil', [LibraryController::class, 'profil'])->name('profil');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register_user');
 Route::post('/login', [AuthController::class, 'login'])->name('login_user');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout_user');
+
+
+Route::prefix('admin')->middleware('auth')->group(function() {
+    Route::get('/dashboard', [LibraryController::class, 'index_admin'])->name('dashboard_admin');
+});
+
+Route::prefix('siswa')->middleware('auth:siswa')->group(function() {
+    Route::get('/dashboard', [LibraryController::class, 'index_siswa'])->name('dashboard_siswa');
+});

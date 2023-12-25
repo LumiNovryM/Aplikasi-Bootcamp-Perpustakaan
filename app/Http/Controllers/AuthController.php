@@ -33,8 +33,11 @@ class AuthController extends Controller
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('dashboard');
+                return redirect()->route('dashboard_admin');
+            }else{
+                return redirect()->route('login');
             }
+
         } else if ($request->login_as === 'Siswa') {
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
@@ -44,7 +47,9 @@ class AuthController extends Controller
             if (Auth::guard('siswa')->attempt($credentials)) {
                 $request->session()->regenerate();
 
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard_siswa');
+            }else{
+                return redirect()->route('login');
             }
         }
     }
