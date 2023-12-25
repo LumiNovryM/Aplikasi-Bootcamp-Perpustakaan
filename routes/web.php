@@ -22,3 +22,4 @@ Route::get('/profil', [LibraryController::class, 'profil']);
 
 Route::post('/register', [AuthController::class, 'register'])->name('register_user');
 Route::post('/login', [AuthController::class, 'login'])->name('login_user');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout_user');
