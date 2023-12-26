@@ -21,8 +21,9 @@
                                     </div>
                                     <label>Password</label>
                                     <div class="mb-3">
-                                        <input type="password" class="form-control" placeholder="Password"
+                                        <input type="password" id="password" onkeyup="passValidation()" class="form-control" placeholder="Password"
                                             aria-label="Password" name="password" aria-describedby="password-addon">
+                                            <p id="valMess" style="font-size: 14px; color: red;"></p>
                                     </div>
                                     <label>Login As</label>
                                     <div class="mb-3">

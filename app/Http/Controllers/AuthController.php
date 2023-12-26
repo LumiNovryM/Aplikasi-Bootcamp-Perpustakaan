@@ -27,7 +27,7 @@ class AuthController extends Controller
         if ($request->login_as === 'Admin') {
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
-                'password' => ['required'],
+                'password' => ['required', 'min:8'],
             ]);
 
             if (Auth::attempt($credentials)) {
@@ -41,7 +41,7 @@ class AuthController extends Controller
         } else if ($request->login_as === 'Siswa') {
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
-                'password' => ['required'],
+                'password' => ['required', 'min:8'],
             ]);
 
             if (Auth::guard('siswa')->attempt($credentials)) {
