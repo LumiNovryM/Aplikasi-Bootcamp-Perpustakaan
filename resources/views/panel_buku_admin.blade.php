@@ -21,12 +21,15 @@
                                         <i class="fa fa-ellipsis-v text-secondary"></i>
                                     </a>
                                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Tambah Buku</a></li>
+                                        <li><a class="dropdown-item border-radius-md" data-bs-toggle="modal"
+                                          data-bs-target="#createModal">Tambah Buku</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                     @include("partials.buku.create_modal")
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
@@ -75,7 +78,11 @@
                                             </td>
                                             <td>
                                                 <div class="avatar-group">
-                                                    <button type="button" class="btn btn-warning">Edit</button>
+                                                   <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                   data-bs-target="#editModal_{{ $buku->id }}" data-book-id="{{ $buku->id }}">
+                                                   Edit
+                                               </button>                                               
+                                                   @include("partials.buku.edit_modal")
                                                     <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
