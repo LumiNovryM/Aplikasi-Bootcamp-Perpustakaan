@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller
@@ -24,5 +25,18 @@ class LibraryController extends Controller
 
     public function profil () {
         return view('profil');
+    }
+
+    public function buku () {
+        $bukus = Buku::all();
+        return view('panel_buku_admin', compact('bukus'));
+    }
+
+    public function delete_buku ($id) {
+        $buku = Buku::findOrFail($id);
+
+        $buku->delete();
+    
+        return redirect()->route('buku')->with('success', 'Book deleted successfully');
     }
 }
