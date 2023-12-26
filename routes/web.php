@@ -30,10 +30,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout_user');
 
 Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/dashboard', [LibraryController::class, 'index_admin'])->name('dashboard_admin');
+
     Route::get('/buku', [LibraryController::class, 'buku'])->name('buku');
     Route::post('/buku', [LibraryController::class, 'store_buku'])->name('buku.store');
     Route::put('/buku/{id}', [LibraryController::class, 'edit_buku'])->name('buku.edit');
     Route::delete('/buku/{id}', [LibraryController::class, 'delete_buku'])->name('buku.delete');
+
+    Route::post('/dashboard', [LibraryController::class, 'store_siswa'])->name('siswa.store');
+    Route::put('/dashboard/{id}', [LibraryController::class, 'edit_siswa'])->name('siswa.edit');
+    Route::delete('/dashboard/{id}', [LibraryController::class, 'delete_siswa'])->name('siswa.delete');
 });
 
 Route::prefix('siswa')->middleware('auth:siswa')->group(function() {
