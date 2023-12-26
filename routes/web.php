@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::get('/login', [LibraryController::class, 'login'])->name('login');
 Route::get('/register', [LibraryController::class, 'register'])->name('register');
 Route::get('/profil', [LibraryController::class, 'profil'])->name('profil');
