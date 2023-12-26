@@ -55,6 +55,14 @@ class LibraryController extends Controller
         return redirect()->route('dashboard_admin')->with('success', 'Siswa created successfully.');
     }
 
+    public function delete_siswa($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+
+        $siswa->delete();
+
+        return redirect()->route('dashboard_admin')->with('success', 'Siswa deleted successfully');
+    }
 
     public function buku()
     {

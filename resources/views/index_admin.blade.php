@@ -72,7 +72,7 @@
                                                             Edit
                                                         </button>
                                                         {{-- @include("partials.buku.edit_modal") --}}
-                                                        <form action="{{ route('buku.delete', $siswa->id) }}" method="POST" class="ml-2">
+                                                        <form action="{{ route('siswa.delete', $siswa->id) }}" method="POST" class="ml-2">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger ml-3">Delete</button>
