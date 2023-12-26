@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class LibraryController extends Controller
 {
@@ -34,6 +35,27 @@ class LibraryController extends Controller
         return view('profil');
     }
 
+    public function store_siswa(Request $request)
+    {
+        // $datas = $request->validate([
+        //     'nama' => 'required|string',
+        //     'kelas' => 'required|string',
+        //     'email' => 'required|email|unique:siswa',
+        //     'password' => 'required|min:6',
+        // ]);
+        Siswa::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role_status' => 'siswa',
+        ]);
+        
+
+        return redirect()->route('dashboard_admin')->with('success', 'Siswa created successfully.');
+    }
+
+
     public function buku()
     {
         $bukus = Buku::all();
@@ -62,11 +84,11 @@ class LibraryController extends Controller
             'pengarang' => 'required|string|max:255',
             'stok_buku' => 'required|integer',
         ]);
-    
+
         $buku = Buku::findOrFail($id);
-    
+
         $buku->update($datas);
-    
+
         return redirect()->route('buku')->with('success', 'Book updated successfully');
     }
 

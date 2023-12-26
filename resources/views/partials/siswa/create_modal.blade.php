@@ -2,33 +2,33 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">Tambah Buku</h5>
+                <h5 class="modal-title" id="createModalLabel">Tambah Akun Siswa/Siswi</h5>
             </div>
-            <form action="{{ route('buku.store') }}" method="POST">
+            <form action="{{ route('siswa.store') }}" method="POST">
                 @csrf
                 <div class="modal-body container-fluid">
                     <div class="mb-3">
-                        <label for="judul" class="form-label">Judul Buku</label>
-                        <input autocomplete="off" type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}">
-                        @error('judul')
+                        <label for="nama" class="form-label">Nama</label>
+                        <input autocomplete="off" type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}">
+                        @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
             
-                        <label for="penerbit" class="form-label">Penerbit</label>
-                        <input autocomplete="off" type="text" class="form-control @error('penerbit') is-invalid @enderror" id="penerbit" name="penerbit" value="{{ old('penerbit') }}">
-                        @error('penerbit')
+                        <label for="kelas" class="form-label">Kelas</label>
+                        <input autocomplete="off" type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}">
+                        @error('kelas')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
             
-                        <label for="pengarang" class="form-label">Pengarang</label>
-                        <input autocomplete="off" type="text" class="form-control @error('pengarang') is-invalid @enderror" id="pengarang" name="pengarang" value="{{ old('pengarang') }}">
-                        @error('pengarang')
+                        <label for="email" class="form-label">Email</label>
+                        <input autocomplete="off" type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                        @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
             
-                        <label for="stok_buku" class="form-label">Stok Buku</label>
-                        <input autocomplete="off" type="number" class="form-control @error('stok_buku') is-invalid @enderror" id="stok_buku" name="stok_buku" value="{{ old('stok_buku') }}">
-                        @error('stok_buku')
+                        <label for="password" class="form-label">Password</label>
+                        <input autocomplete="off" type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}">
+                        @error('password')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

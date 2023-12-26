@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                     {{-- @include("partials.buku.create_modal") --}}
+                     @include("partials.siswa.create_modal")
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
