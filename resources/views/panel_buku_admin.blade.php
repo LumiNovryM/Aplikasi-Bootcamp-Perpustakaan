@@ -78,11 +78,11 @@
                                             </td>
                                             <td>
                                                 <div class="avatar-group">
-                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal2">
-                                                        Edit
-                                                    </button>
-                                                   {{-- @include("partials.buku.edit_modal") --}}
+                                                   <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                   data-bs-target="#editModal_{{ $buku->id }}" data-book-id="{{ $buku->id }}">
+                                                   Edit
+                                               </button>                                               
+                                                   @include("partials.buku.edit_modal")
                                                     <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')

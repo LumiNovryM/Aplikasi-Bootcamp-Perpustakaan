@@ -28,6 +28,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('/dashboard', [LibraryController::class, 'index_admin'])->name('dashboard_admin');
     Route::get('/buku', [LibraryController::class, 'buku'])->name('buku');
     Route::post('/buku', [LibraryController::class, 'store_buku'])->name('buku.store');
+    Route::put('/buku/{id}', [LibraryController::class, 'edit_buku'])->name('buku.edit');
     Route::delete('/buku/{id}', [LibraryController::class, 'delete_buku'])->name('buku.delete');
 });
 

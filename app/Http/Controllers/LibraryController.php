@@ -52,6 +52,22 @@ class LibraryController extends Controller
         return redirect()->route('buku')->with('success', 'Book added successfully');
     }
 
+    public function edit_buku(Request $request, $id)
+    {
+        $datas = $request->validate([
+            'judul' => 'required|string|max:255',
+            'penerbit' => 'required|string|max:255',
+            'pengarang' => 'required|string|max:255',
+            'stok_buku' => 'required|integer',
+        ]);
+    
+        $buku = Buku::findOrFail($id);
+    
+        $buku->update($datas);
+    
+        return redirect()->route('buku')->with('success', 'Book updated successfully');
+    }
+
     public function delete_buku($id)
     {
         $buku = Buku::findOrFail($id);
