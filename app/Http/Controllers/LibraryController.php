@@ -55,6 +55,28 @@ class LibraryController extends Controller
         return redirect()->route('dashboard_admin')->with('success', 'Siswa created successfully.');
     }
 
+    public function edit_siswa(Request $request, $id)
+    {
+        // $datas = $request->validate([
+        //     'nama' => 'required|string',
+        //     'kelas' => 'required|string',
+        //     'email' => 'required|email|unique:siswa',
+        //     'password' => 'required|min:6',
+        // ]);
+
+        $siswa = Siswa::findOrFail($id);
+
+        $siswa->update([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role_status' => 'siswa',
+        ]);
+
+        return redirect()->route('dashboard_admin')->with('success', 'Siswa updated successfully');
+    }
+
     public function delete_siswa($id)
     {
         $siswa = Siswa::findOrFail($id);

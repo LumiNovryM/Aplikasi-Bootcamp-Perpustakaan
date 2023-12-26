@@ -71,7 +71,7 @@
                                                                 data-bs-target="#editModal_{{ $siswa->id }}" data-book-id="{{ $siswa->id }}">
                                                             Edit
                                                         </button>
-                                                        {{-- @include("partials.buku.edit_modal") --}}
+                                                        @include("partials.siswa.edit_modal")
                                                         <form action="{{ route('siswa.delete', $siswa->id) }}" method="POST" class="ml-2">
                                                             @csrf
                                                             @method('DELETE')
