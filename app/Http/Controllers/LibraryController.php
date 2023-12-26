@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller
@@ -27,6 +28,7 @@ class LibraryController extends Controller
     }
 
     public function buku () {
-        return view('panel_buku_admin');
+        $bukus = Buku::all();
+        return view('panel_buku_admin', compact('bukus'));
     }
 }

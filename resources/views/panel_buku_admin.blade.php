@@ -21,11 +21,7 @@
                                         <i class="fa fa-ellipsis-v text-secondary"></i>
                                     </a>
                                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another
-                                                action</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else
-                                                here</a></li>
+                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Tambah Buku</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -40,65 +36,43 @@
                                             Judul Buku</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nomor Buku</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Tahun Terbit</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Penerbit</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Penulis</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Jenis Buku</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Mein Kampf</h6>
+                                    @foreach ($bukus as $buku)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ $buku->judul }}</h6>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                0001
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                1940
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                Deustchland
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                Adolf Hitler
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                Biografi
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group">
-                                                <button type="button" class="btn btn-warning">Edit</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
+                                                    {{ $buku->penerbit }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
+                                                    {{ $buku->pengarang }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
+                                                    <button type="button" class="btn btn-warning">Edit</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
