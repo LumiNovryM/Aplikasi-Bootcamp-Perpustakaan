@@ -12,6 +12,15 @@
                                 <p class="mb-0">Enter your email and password to sign in</p>
                             </div>
                             <div class="card-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            {{ $error }}
+                                            <br>
+                                        @endforeach
+                                    </div>
+                                @endif
+                                
                                 <form role="form" action="{{ route('login_user') }}" method="POST">
                                     @csrf
                                     <label>Email</label>

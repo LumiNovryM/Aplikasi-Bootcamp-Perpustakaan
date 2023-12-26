@@ -7,6 +7,7 @@ use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -24,10 +25,19 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
+        if($request->login_as == "Login As"){
+            return redirect()->route('login')->withErrors('Login As harus di isi!');
+        }
+
         if ($request->login_as === 'Admin') {
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required', 'min:8'],
+            ], [
+                'password.min' => "Password harus memiliki panjang minimal 8 karakter!",
+                'password.required' => "Password harus dimasukkan untuk login!",
+                'email.required' => "Email harus dimasukkan untuk login!"
             ]);
 
             if (Auth::attempt($credentials)) {
