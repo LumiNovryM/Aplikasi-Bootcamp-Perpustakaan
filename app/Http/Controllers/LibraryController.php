@@ -25,4 +25,8 @@ class LibraryController extends Controller
     public function profil () {
         return view('profil');
     }
+
+    public function buku () {
+        return view('panel_buku_admin');
+    }
 }
