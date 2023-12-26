@@ -42,6 +42,9 @@
                                             Penulis</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Stok Buku</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Action</th>
                                     </tr>
                                 </thead>
@@ -67,8 +70,17 @@
                                             </td>
                                             <td>
                                                 <div class="avatar-group">
+                                                    {{ $buku->stok_buku }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
                                                     <button type="button" class="btn btn-warning">Edit</button>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>

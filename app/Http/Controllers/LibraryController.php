@@ -31,4 +31,12 @@ class LibraryController extends Controller
         $bukus = Buku::all();
         return view('panel_buku_admin', compact('bukus'));
     }
+
+    public function delete_buku ($id) {
+        $buku = Buku::findOrFail($id);
+
+        $buku->delete();
+    
+        return redirect()->route('buku')->with('success', 'Book deleted successfully');
+    }
 }

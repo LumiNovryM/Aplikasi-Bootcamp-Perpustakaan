@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('penerbit');
             $table->string('pengarang');
+            $table->bigInteger('stok_buku');
             $table->timestamps();
         });
     }
