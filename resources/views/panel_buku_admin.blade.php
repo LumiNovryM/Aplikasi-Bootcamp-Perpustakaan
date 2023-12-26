@@ -77,11 +77,11 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="avatar-group">
+                                                <div class="avatar-group d-flex">
                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                    data-bs-target="#editModal_{{ $buku->id }}" data-book-id="{{ $buku->id }}">
-                                                   Edit
-                                               </button>                                               
+                                                        Edit
+                                                    </button>                                               
                                                    @include("partials.buku.edit_modal")
                                                     <form action="{{ route('buku.delete', $buku->id) }}" method="POST">
                                                         @csrf

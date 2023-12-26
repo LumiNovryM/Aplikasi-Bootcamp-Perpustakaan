@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller
 {
     public function index_admin()
     {
-        return view('index_admin');
+        $siswas = Siswa::all();
+        return view('index_admin', compact("siswas"));
     }
 
     public function index_siswa()

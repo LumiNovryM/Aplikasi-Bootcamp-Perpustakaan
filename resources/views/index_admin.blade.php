@@ -8,11 +8,7 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-lg-6 col-7">
-                                <h6>Projects</h6>
-                                <p class="text-sm mb-0">
-                                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                                    <span class="font-weight-bold ms-1">30 done</span> this month
-                                </p>
+                                <h6>Akun Siswa/Siswi</h6>
                             </div>
                             <div class="col-lg-6 col-5 my-auto text-end">
                                 <div class="dropdown float-lg-end pe-4">
@@ -21,88 +17,71 @@
                                         <i class="fa fa-ellipsis-v text-secondary"></i>
                                     </a>
                                     <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another
-                                                action</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else
-                                                here</a></li>
+                                        <li><a class="dropdown-item border-radius-md" data-bs-toggle="modal"
+                                          data-bs-target="#createModal">Tambah Akun</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                     {{-- @include("partials.buku.create_modal") --}}
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Companies</th>
+                                            Nama</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Members</th>
+                                            Kelas</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Budget</th>
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Email</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Completion</th>
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex px-2 py-1">
-                                                <div>
-                                                    <img src="../assets/img/small-logos/logo-xd.svg"
-                                                        class="avatar avatar-sm me-3" alt="xd">
-                                                </div>
-                                                <div class="d-flex flex-column justify-content-center">
-                                                    <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="avatar-group mt-2">
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                    title="Ryan Tompson">
-                                                    <img src="../assets/img/team-1.jpg" alt="team1">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                    title="Romina Hadid">
-                                                    <img src="../assets/img/team-2.jpg" alt="team2">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                    title="Alexander Smith">
-                                                    <img src="../assets/img/team-3.jpg" alt="team3">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
-                                                    title="Jessica Doe">
-                                                    <img src="../assets/img/team-4.jpg" alt="team4">
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold"> $14,000 </span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <div class="progress-wrapper w-75 mx-auto">
-                                                <div class="progress-info">
-                                                    <div class="progress-percentage">
-                                                        <span class="text-xs font-weight-bold">60%</span>
+                                    @foreach ($siswas as $siswa)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-sm">{{ $siswa->nama }}</h6>
                                                     </div>
                                                 </div>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-gradient-info w-60" role="progressbar"
-                                                        aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
+                                                    {{ $siswa->kelas }}
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td>
+                                                <div class="avatar-group">
+                                                    {{ $siswa->email }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="">
+                                                    <div class="avatar-group d-flex">
+                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                                data-bs-target="#editModal_{{ $siswa->id }}" data-book-id="{{ $siswa->id }}">
+                                                            Edit
+                                                        </button>
+                                                        {{-- @include("partials.buku.edit_modal") --}}
+                                                        <form action="{{ route('buku.delete', $siswa->id) }}" method="POST" class="ml-2">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger ml-3">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </td>                                            
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
