@@ -14,4 +14,9 @@ class Siswa extends Model
 
     protected $table = 'siswas';
 
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'siswa_id');
+    }
+
 }
