@@ -15,11 +15,6 @@ class LibraryController extends Controller
         return view('index_admin', compact("siswas"));
     }
 
-    public function index_siswa()
-    {
-        return view('index_siswa');
-    }
-
     public function login()
     {
         return view('login');

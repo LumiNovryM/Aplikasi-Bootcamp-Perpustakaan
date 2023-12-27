@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,5 +43,8 @@ Route::prefix('admin')->middleware('auth')->group(function() {
 });
 
 Route::prefix('siswa')->middleware('auth:siswa')->group(function() {
-    Route::get('/dashboard', [LibraryController::class, 'index_siswa'])->name('dashboard_siswa');
+    Route::get('/dashboard', [TransactionController::class, 'index_get_siswa'])->name('dashboard_siswa');
+
+    Route::get('/trx', [TransactionController::class, 'pinjam_buku_view'])->name('pinjam_buku');
+    Route::post('/trx/{id}', [TransactionController::class, 'store'])->name('store_trx');
 });
