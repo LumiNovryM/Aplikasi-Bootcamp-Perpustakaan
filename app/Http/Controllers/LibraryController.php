@@ -34,4 +34,29 @@ class LibraryController extends Controller
         $buku->delete();
         return redirect()->route('dashboard_admin')->with('success', 'Buku berhasil dihapus');
     }
+
+    public function create_buku(Request $request) {
+        $datas = $request->validate([
+            'judul' => 'required|string',
+            'penerbit' => 'required|string',
+            'pengarang' => 'required|string',
+            'stok_buku' => 'required|integer',
+        ]);
+
+        Buku::create($datas);
+        return redirect()->route('dashboard_admin')->with('success', 'Buku berhasil ditambahkan');
+    }
+
+    public function edit_buku(Request $request, $id) {
+        $datas = $request->validate([
+            'judul' => 'required|string',
+            'penerbit' => 'required|string',
+            'pengarang' => 'required|string',
+            'stok_buku' => 'required|integer',
+        ]);
+
+        $buku = Buku::findOrFail($id);
+        $buku->update($datas);
+        return redirect()->route('dashboard_admin')->with('success', 'Buku berhasil diedit');
+    }
 }

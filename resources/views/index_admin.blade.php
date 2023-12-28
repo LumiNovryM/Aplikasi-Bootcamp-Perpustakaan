@@ -3,7 +3,10 @@
 {{-- content --}}
 <div class="container-fluid py-4">
         <div class="container-fluid py-4">
-            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createBuku">
+                Buat Buku
+            </button>
+            @include('partials.buku.create_buku')
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
@@ -46,9 +49,12 @@
                                                     <form action="{{ route("buku.delete", $buku->id) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button type="button" class="btn btn-danger">Delete</button>
                                                     </form>
-                                                    <button type="button" class="btn btn-warning">Warning</button>
+                                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editBuku_{{ $buku->id }}" data-book-id={{ $buku->id }}>
+                                                        Buat Buku
+                                                    </button>
+                                                    @include('partials.buku.edit_buku')
                                                 </td>
                                             </tr>
                                         @endforeach
