@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class LibraryController extends Controller
 {
-    public function index () {
-        return view('index');
+    public function index_admin () {
+        return view('index_admin');
+    }
+
+    public function index_siswa () {
+        return view('index_siswa');
     }
 
     public function login () {
